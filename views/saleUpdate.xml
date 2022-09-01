@@ -1,0 +1,23 @@
+<odoo>
+    <record id="view_order_form_inherit" model="ir.ui.view">
+        <field name="name">sale.order_inherited</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <field name="payment_term_id" position="after">
+                <field name="origin_country"/>
+                <field name="ship_to"/>
+<!--                <field name="ship_fees"/>-->
+                 </field>
+
+<!--            <field name="amount_tax" position="after">-->
+<!--                &lt;!&ndash;                <label for="ship_fees" name="ship_fees"/>&ndash;&gt;-->
+<!--                <field name="ship_fees" class="oe_inline"-->
+<!--                       attrs="{'invisible':[('ship_fees','!=',True),('ship_fees','=',0)],'readonly':[('ship_fees','!=',True),('ship_fees','!=',0)]}"/>-->
+<!--            </field>-->
+
+
+        </field>
+    </record>
+
+</odoo>

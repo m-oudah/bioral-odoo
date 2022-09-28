@@ -1,6 +1,6 @@
 <openerp>
     <data>
-        <template id="brandon_report_saleorder_document" inherit_id="sale.report_saleorder_document">
+        <template id="bioral_report_saleorder_document" inherit_id="sale.report_saleorder_document">
             <xpath expr="//t[@t-call='web.external_layout']" position="replace">
 
 
@@ -41,23 +41,28 @@
                         <!--    </t>-->
                         <!--    <span t-field="doc.name"/>-->
                         <!--</h4>-->
-                          <div class="row" style=" padding-bottom:5px; margin:0px; margin-top:5px;  ">
-                              <div class="col-auto col-4"></div>
+                        <div class="row" style=" padding-bottom:5px; margin:0px;  ">
+                            <div class="col-auto col-4"></div>
 
 
-
-                              <div class="col-auto col-6 mb-2 text-center" style="border-bottom:1px #919191 solid;">
-                                <h2 t-if="(doc.date_order and doc.state in ['draft','sent'])  and (not is_pro_forma) " style="color:#000">QUOTATION </h2>
-                                <h2 t-if="(doc.date_order and doc.state not in ['draft','sent']) and (not is_pro_forma) " style="color:#000">SALE ORDER </h2>
-                                <h2 t-if="env.context.get('proforma', False) or is_pro_forma" style="color:#000">PROFORMA INVOICE </h2>
+                            <div class="col-auto col-4 mb-1 text-center" style="border-bottom:1px #919191 dotted;">
+                                <h3 t-if="(doc.date_order and doc.state in ['draft','sent'])  and (not is_pro_forma) "
+                                    style="color:#000">QUOTATION
+                                </h3>
+                                <h3 t-if="(doc.date_order and doc.state not in ['draft','sent']) and (not is_pro_forma) "
+                                    style="color:#000">SALE ORDER
+                                </h3>
+                                <h3 t-if="env.context.get('proforma', False) or is_pro_forma" style="color:#000">
+                                    PROFORMA INVOICE
+                                </h3>
                             </div>
 
-                              <div class="col-auto col-4"></div>
-                          </div>
-                        <div class="row" style=" padding-bottom:10px; margin:0px; margin-top:10px; ">
+                            <div class="col-auto col-4"></div>
+                        </div>
+                        <div class="row" style=" padding-bottom:5px; margin:0px; margin-top:10px;  ">
 
                             <div class="col-auto col-6 mw-100 mb-2">
-                                <strong style="color:#000">Bill To:</strong>
+                                <strong style="color:#000; font-weight:700px; font-size:15pt;">Bill To:</strong>
                                 <div t-field="doc.partner_id"
                                      t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: True}"/>
                             </div>
@@ -88,8 +93,9 @@
                         </div>
 
 
-                        <div class="row mt32 mb32" id="informations"
-                             style="padding:15px; margin:0px; border-top:1px solid #919191;  ">
+                        <!--top information box -->
+
+                        <div class="row mt32 mb32 mb-2" id="informations" style="margin:0px; background:#fff;">
                             <div t-if="doc.client_order_ref" class="col-auto col-3 mw-100 mb-2">
                                 <strong>Your Reference:</strong>
                                 <p class="m-0" t-field="doc.client_order_ref"/>
@@ -98,17 +104,19 @@
 
                             <div t-if="doc.date_order and doc.state not in ['draft','sent']"
                                  class="col-auto col-3 mw-100 mb-2  text-center"
-                                 style="border-right:1px solid #919191;">
+                                 style="border:1px solid #919191;padding:5px">
                                 <strong>Order No:</strong>
                                 <p class="m-0" t-field="doc.name"/>
                             </div>
                             <div t-if="doc.date_order and doc.state in ['draft','sent']"
-                                 class="col-auto col-3 mw-100 mb-2 text-center" style="border-right:1px solid #919191;">
+                                 class="col-auto col-3 mw-100 mb-2 text-center"
+                                 style="border:1px solid #919191;padding:5px">
                                 <strong>Quotation No:</strong>
                                 <p class="m-0" t-field="doc.name"/>
                             </div>
                             <div t-if="env.context.get('proforma', False) or is_pro_forma"
-                                 class="col-auto col-3 mw-100 mb-2 text-center" style="border-right:1px solid #919191;">
+                                 class="col-auto col-3 mw-100 mb-2 text-center"
+                                 style="border:1px solid #919191;padding:5px">
                                 <strong>PROFORMA INV. No:</strong>
                                 <p class="m-0" t-field="doc.name"/>
                             </div>
@@ -116,41 +124,46 @@
 
                             <div t-if="doc.date_order and doc.state not in ['draft','sent']"
                                  class="col-auto col-3 mw-100 mb-2  text-center"
-                                 style="border-right:1px solid #919191;">
+                                 style="border:1px solid #919191; padding:5px">
                                 <strong>Order Date:</strong>
                                 <p class="m-0" t-field="doc.date_order"/>
                             </div>
                             <div t-if="doc.date_order and doc.state in ['draft','sent']"
-                                 class="col-auto col-3 mw-100 mb-2 text-center" style="border-right:1px solid #919191;">
+                                 class="col-auto col-3 mw-100 mb-2 text-center"
+                                 style="border:1px solid #919191; padding:5px">
                                 <strong>Quotation Date:</strong>
                                 <p class="m-0" t-field="doc.date_order"
                                    t-options="{&quot;widget&quot;: &quot;date&quot;}"/>
                             </div>
                             <div t-if="doc.validity_date and doc.state in ['draft', 'sent']"
                                  class="col-auto col-3 mw-100 mb-2 text-center" name="expiration_date"
-                                 style="border-right:1px solid #919191;">
+                                 style="border:1px solid #919191; padding:5px">
                                 <strong>Expiration:</strong>
                                 <p class="m-0" t-field="doc.validity_date"/>
                             </div>
-                            <div t-if="doc.user_id.name" class="col-auto col-3 mw-100 mb-2 text-center">
+                            <div t-if="doc.user_id.name" class="col-auto col-3 mw-100 mb-2 text-center"
+                                style="border:1px solid #919191;padding:5px">
                                 <strong>Salesperson:</strong>
                                 <p class="m-0" t-field="doc.user_id"/>
                             </div>
                         </div>
+                        <!--top information box -->
 
 
                         <!-- Is there a discount on at least one line? -->
                         <t t-set="display_discount" t-value="any(l.discount for l in doc.order_line)"/>
 
-                        <table class="table  table-sm table-striped">
+                        <table class="table table-sm table-striped" style="background:#fff;">
                             <!-- In case we want to repeat the header, remove "display: table-row-group" -->
                             <thead style="display: table-row-group">
                                 <tr>
                                     <th name="th_description" class="text-left">Description</th>
                                     <!--                                    <th name="th_category" class="text-center">Category</th>-->
-                                    <th t-if="doc.state not in ['draft','sent'] or is_pro_forma " name="th_quantity" class="text-center">Quantity</th>
+                                    <th t-if="doc.state not in ['draft','sent'] or is_pro_forma " name="th_quantity"
+                                        class="text-center">Quantity
+                                    </th>
 
-<!--                                     <th name="th_packsize" class="text-center">Package</th>-->
+                                    <!--                                     <th name="th_packsize" class="text-center">Package</th>-->
 
                                     <th name="th_priceunit" class="text-center">Unit Price</th>
 
@@ -161,8 +174,9 @@
                                     <!--<th name="th_taxes" class="text-right">Taxes</th>-->
 
 
-                                    <th t-if="doc.state not in ['draft','sent'] or is_pro_forma " name="th_subtotal" class="text-center">
-<!--                                    <th name="th_subtotal" class="text-center">-->
+                                    <th t-if="doc.state not in ['draft','sent'] or is_pro_forma " name="th_subtotal"
+                                        class="text-center">
+                                        <!--                                    <th name="th_subtotal" class="text-center">-->
                                         <span groups="account.group_show_line_subtotals_tax_excluded">Amount</span>
                                         <span groups="account.group_show_line_subtotals_tax_included">Total Price
                                         </span>
@@ -187,17 +201,18 @@
                                                 <span t-field="line.name"/>
                                             </td>
 
-                                            <td t-if="doc.state not in ['draft','sent'] or is_pro_forma" name="td_quantity" class="text-center">
+                                            <td t-if="doc.state not in ['draft','sent'] or is_pro_forma"
+                                                name="td_quantity" class="text-center">
                                                 <span t-field="line.product_uom_qty"/>
 
                                             </td>
-<!--                                             <td name="td_pack" class="text-center">-->
-<!--                                                <span t-field="line.size"/>-->
-<!--                                            </td>-->
+                                            <!--                                             <td name="td_pack" class="text-center">-->
+                                            <!--                                                <span t-field="line.size"/>-->
+                                            <!--                                            </td>-->
 
                                             <td name="td_priceunit" class="text-center">
                                                 <span t-field="line.price_unit"/>
-                                          <!--       / <span t-field="line.product_uom"/>-->
+                                                <!--       / <span t-field="line.product_uom"/>-->
                                             </td>
 
 
@@ -207,8 +222,9 @@
                                             </td>
 
 
-                                            <td t-if="doc.state not in ['draft','sent'] or is_pro_forma" name="td_subtotal" class="text-center o_price_total">
-<!--                                            <td name="td_subtotal" class="text-center">-->
+                                            <td t-if="doc.state not in ['draft','sent'] or is_pro_forma"
+                                                name="td_subtotal" class="text-center o_price_total">
+                                                <!--                                            <td name="td_subtotal" class="text-center">-->
                                                 <span t-field="line.price_subtotal"
                                                       groups="account.group_show_line_subtotals_tax_excluded"/>
                                                 <span t-field="line.price_total"
@@ -230,7 +246,7 @@
                                     </tr>
 
                                     <t t-if="current_section and (line_last or doc.order_line[line_index+1].display_type == 'line_section')">
-                                        <tr  class="is-subtotal text-right">
+                                        <tr class="is-subtotal text-right">
                                             <td name="td_section_subtotal" colspan="99">
                                                 <strong class="mr16">Subtotal</strong>
                                                 <span t-esc="current_subtotal"
@@ -244,7 +260,8 @@
 
                         <!--                            <h6 t-if="doc.state not in ['draft','sent']">ORDER NO.</h6>-->
 
-                        <div t-if="doc.state not in ['draft','sent'] or is_pro_forma" class="clearfix" name="so_total_summary">
+                        <div t-if="doc.state not in ['draft','sent'] or is_pro_forma" class="clearfix"
+                             name="so_total_summary">
                             <div id="total" class="row" name="total">
                                 <div t-attf-class="#{'col-4' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto">
                                     <table class="table table-sm">
@@ -257,7 +274,7 @@
                                             </td>
                                         </tr>
                                         <t t-foreach="doc.amount_by_group" t-as="amount_by_group">
-                                            <tr >
+                                            <tr>
                                                 <t t-if="amount_by_group[5] == 1 and doc.amount_untaxed == amount_by_group[2]">
                                                     <td name="td_amount_by_group_label_3">
                                                         <span t-esc="amount_by_group[0]"/>
@@ -297,11 +314,11 @@
                         </div>
 
 
-                           <div class="row" style="padding:20px;">
+                        <div class="row" style="padding:20px;">
                             <table width="100%" style="border:none;">
-                                <tbody >
+                                <tbody>
                                     <tr>
-                                        <td style="border:none;" >
+                                        <td style="border:none;">
                                             <div class="oe_structure"/>
                                             <p t-field="doc.note"/>
                                             <p t-if="doc.payment_term_id.note">
@@ -316,7 +333,7 @@
                                         <td class="align-bottom" style="border:none;" width="30%">
                                             <div t-if="doc.signature" name="signature">
                                                 <div class="offset-8">
-                                    <!--                                        <strong>Signature</strong>-->
+                                                    <!--                                        <strong>Signature</strong>-->
                                                 </div>
                                                 <div class="text-center">
                                                     <img t-att-src="image_data_uri(doc.signature)"

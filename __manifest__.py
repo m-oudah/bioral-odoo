@@ -21,19 +21,21 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['sale','base','product'],
+    'depends': ['sale','base','product','contacts','stock','purchase'],
 
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
-        'views/views.xml',
-        # 'views/saleOrderReport.xml',
+        'views/saleOrderUpdate.xml',
+        'views/separate_customers_vendors.xml',
+        'views/purchase_quotation.xml',
+        'views/show_only_sold_products_in_MO.xml',
         'views/bioral_layout.xml',
         'views/reaya_layout.xml',
+        'views/remal_layout.xml',
         'views/bioral_report_saleorder_document.xml',
-        # 'views/saleUpdate.xml',
-        # 'views/ProductUpdate.xml',
-        # 'views/OrderLineUpdate.xml',
+        'views/ProductUpdate.xml',
+
     ],
     # only loaded in demonstration mode
     'demo': [

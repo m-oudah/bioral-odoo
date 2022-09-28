@@ -1,0 +1,101 @@
+<openerp>
+    <data>
+        <template id="general_bioral_layout" t-if="">
+            <xpath expr="//div[@t-attf-class='header o_company_#{company.id}_layout']" position="replace">
+
+                <div class="header"
+                     style=" vertical-align:middle;  color:#58ae49; ">
+                    <div class="row align-middle">
+                        <div class="col-8">
+                            <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" width="160px"
+                                 alt="Bioral Logo"/>
+                        </div>
+                        <div class="col-4 " style="font-size:12pt; vertical-align:middle; text-align:center;
+                        padding-top:20px; border-radius:5px; font-weight:600; background:#58ae49; color:#fff; ">
+                            <div>
+                                <span t-field="company.company_registry"/>
+                            </div>
+                            <div>
+                                Email: <span t-field="company.email"/>
+                            </div>
+                            <div>
+                                Tel : <span t-field="company.phone"/>
+                            </div>
+                            <div>
+                                Website: <span t-field="company.website"/>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </xpath>
+
+
+            <div t-attf-class="article o_report_layout_boxed o_company_#{company.id}_layout"
+                 t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
+                 t-att-data-oe-lang="o and o.env.context.get('lang')" style="border-bottom:0px;">
+                <div class="pt-5">
+                    <!-- This div ensures that the address is not cropped by the header. -->
+                    <t t-call="web.address_layout"/>
+                </div>
+                <t t-raw="0"/>
+            </div>
+
+            <xpath expr="//div[@t-attf-class='footer o_boxed_footer o_company_#{company.id}_layout']"
+                   position="replace">
+
+                <div class="footer">
+
+                    <div class="row align-middle"
+                         style="background:#58ae49; border-radius:5px; color:#fff; padding:2px; font-family:Calibri;  ">
+                        <div class="col-10 float-left " style="padding:10px;">
+
+                            <div class="col-md-6 mb-4 vertical-align:middle;">
+                                <ul class="list-unstyled ">
+                                    <li>
+                                        <span>
+                                            <span t-field="company.street"/>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <span t-field="company.street2"/>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <span t-field="company.city"/>
+                                        </span>
+
+                                    </li>
+
+                                    <li>
+                                        <span>
+                                           <span t-field="company.country_id"/>
+                                        </span>
+
+                                    </li>
+
+
+                                </ul>
+
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-2 float-right" style="padding:5px; vertical-align:middle;">
+                            <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" width="100px"
+                                 alt="Bioral Logo"/>
+                        </div>
+                    </div>
+
+
+                </div> <!-- Footer Div -->
+
+            </xpath>
+        </template>
+    </data>
+</openerp>

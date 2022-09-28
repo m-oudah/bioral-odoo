@@ -2,8 +2,6 @@
 
 # from . import models
 from . import SaleOrderUpdate
-from . import ProductUpdate
-from . import OrderLineUpdate
-
-
-# from . import sale
+# from . import ProductUpdate
+# from . import OrderLineUpdate
+from . import ContactUpdate

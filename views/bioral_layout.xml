@@ -1,27 +1,31 @@
 <openerp>
     <data>
         <template id="bioral_layout">
-            <xpath expr="//div[@t-attf-class='header o_company_#{company.id}_layout']" position="replace">
+            <xpath expr="//div[@t-attf-class='header o_brand_#{brand.id}_layout']" position="replace">
 
                 <div class="header"
-                     style="border-bottom:2px solid #9a9a9a; padding-bottom:10px;  vertical-align:middle; font-family:Oswald,Calibri; ">
+                     style=" vertical-align:middle;  color:#58ae49; ">
                     <div class="row align-middle">
-                        <div class="col-7">
-                            <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" width="110px"
+                        <div class="col-8">
+
+                            <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" width="150px"
                                  alt="Bioral Logo"/>
                         </div>
-                        <div class="col-5 " style="vertical-align:middle;">
-                            <h4 class="mt0" t-field="company.report_header"/>
-                            <div name="company_address"
-                                 style="padding-top:40px; font-size:18pt;">
-
-                                <h4>A Jordanian Animal Health Company</h4>
-
-                                <!--                                <span class="company_address" t-field="company.partner_id"-->
-                                <!--                                      t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}"/>-->
-
-
+                        <div class="col-4 " style="font-size:12pt; vertical-align:middle; text-align:left;
+                        padding-top:20px; border-left:solid #58ae49 3px;  color:#000; ">
+                            <div>
+                                   <span t-field="company.name"/>
                             </div>
+                            <div>
+                                Email: <span t-field="company.email"/>
+                            </div>
+                            <div>
+                                Tel : <span t-field="company.phone"/>
+                            </div>
+                            <div>
+<!--                                Website: <span t-field="brand.website"/>-->
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -30,9 +34,9 @@
             </xpath>
 
 
-            <div t-attf-class="article o_report_layout_boxed o_company_#{company.id}_layout"
+            <div t-attf-class="article o_report_layout_boxed o_brand_#{company.id}_layout"
                  t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
-                 t-att-data-oe-lang="o and o.env.context.get('lang')" style="border-bottom:0px;">
+                 t-att-data-oe-lang="o and o.env.context.get('lang')" style="margin-top:30px; background:url('/bioral/static/src/bioral_bg.jpg') no-repeat; background-size: contain; padding-top:40px; background-position: center;">
                 <div class="pt-5">
                     <!-- This div ensures that the address is not cropped by the header. -->
                     <t t-call="web.address_layout"/>
@@ -40,58 +44,15 @@
                 <t t-raw="0"/>
             </div>
 
-            <xpath expr="//div[@t-attf-class='footer o_boxed_footer o_company_#{company.id}_layout']"
+            <xpath expr="//div[@t-attf-class='footer o_boxed_footer o_brand_#{brand.id}_layout']"
                    position="replace">
 
                 <div class="footer">
-
-                    <div class="row align-middle"
-                         style=" padding:2px; color:#555;  border-top:2px solid #9a9a9a; font-family:Oswald,Calibri;  ">
-                        <div class="col-10 float-left " style="padding:15px;">
-                            <p>AFAQ ADDITIVES FEED CO. [Registration No. 1748]</p>
-
-
-                            <div class="col-md-6 mb-4">
-
-                                <ul class="list-unstyled ">
-                                    <li>
-                                        <span>
-                                            <img src='/brandon/static/src/whatsapp.png' width="20px"/>
-                                          <span t-field="company.phone"/>
-                                        </span>
-
-
-                                    </li>
-
-                                    <li>
-                                        <span>
-                                            <img src='/brandon/static/src/website.png' width="20px"/>
-                                            <a href="mailto:info@bioral.net"><span t-field="company.email"/></a>
-                                        </span>
-
-                                    </li>
-
-                                    <li>
-                                        <span>
-                                            <img src='/brandon/static/src/location.png' width="20px"/>
-                                            Industrial Zone [124] - AlZarqa - Amman- Jordan
-                                        </span>
-
-                                    </li>
-
-
-                                </ul>
-
-
-                            </div>
-
-                        </div>
-
-                        <div class="col-2 float-right" style="padding:25px; vertical-align:middle;">
-                            <img src='/brandon/static/src/addvet_qr.png' width="80px"/>
+                    <div class="row align-middle">
+                        <div class="col-12 " style="padding:10px;">
+                           <img src="/bioral/static/src/bioral_footer.png" width="100%"/>
                         </div>
                     </div>
-
 
                 </div> <!-- Footer Div -->
 
